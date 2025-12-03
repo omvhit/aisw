@@ -1,0 +1,18 @@
+name: Build & Run C
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch: {}
+
+jobs:
+  build_run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build
+        run: gcc -O2 -Wall -Wextra -std=c11 hello.c -o hello
+
+      - name: Run
+        run: ./hello
